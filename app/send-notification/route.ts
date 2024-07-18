@@ -12,6 +12,7 @@ if (!admin.apps.length) {
 
 export async function POST(request: NextRequest) {
   const { token, title, message, link } = await request.json();
+  console.log({ link });
 
   const payload: Message = {
     token,
@@ -22,6 +23,7 @@ export async function POST(request: NextRequest) {
     data: {
       title,
       body: message,
+      link,
     },
     webpush: link && {
       fcmOptions: {
